@@ -7,7 +7,7 @@
 
 /* define global constants and variables */
 
-#include ed1.h
+//#include ed1.h
 
 /* return: is first token in args a number ? */
 /* return value of number in *val            */
@@ -135,10 +135,6 @@ int i,j,k;
 
 	return(len);
 }
-
-
-
-
 
 /* system error routine */
 
@@ -274,4 +270,4 @@ int k, kmax, t;
 	}
 	return(kmax);
 }
-
+

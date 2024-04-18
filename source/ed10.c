@@ -7,7 +7,7 @@
 
 /* define globals */
 
-#include ed1.h
+//#include "src/ed1.h"
 
 /* globals used by this module -----
 
@@ -41,7 +41,8 @@ bufnew()
 int k;
 	/* do initial allocation of memory */
 	if (buffer==0) {
-		k=60;
+		//k=60;
+		k = 2;
 		while ((buffer=alloc(k*1024))==-1)
 			k--;
 		bufend=buffer+k*1024;
@@ -455,7 +456,3 @@ bufext(length) int length;
 	return(OK);
 }
 
-#include "a:stdlib.c"
-
-current line down */
-	b

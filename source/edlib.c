@@ -5,7 +5,8 @@ This module contains library functions missing from C/80
 
 itoa(n,s) int n; char *s;
 {
-	static char *p;
+	//static char *p;
+	char *p;
 
 	p = s;
 	if (n == 0) *p++ = '0';
@@ -59,19 +60,19 @@ tolower(c) char c;
 	return (isupper(c)? c|0x20 : c);
 }
 
-/*
+
 max(a,b) int a,b;
 {
 	return (a>b? a : b);
 }
-*/
 
-/*
+
+
 min(a,b) int a,b;
 {
 	return (a<b? a : b);
 }
-*/
+
 
 abs(i) int i;
 {
@@ -93,4 +94,3 @@ strcat(dest,source) char *dest,*source;
 	strcpy(--dest,source);
 }
 
-

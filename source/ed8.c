@@ -7,7 +7,7 @@
 
 /* define globals */
 
-#include ed1.h
+//#include ed1.h
 
 
 /* all calls to the operating system are made here.
@@ -23,7 +23,7 @@
 
 syscstat()
 {
-	return(bdos(6,-1));
+	return(_bdos(6,-1));
 }
 
 /* wait for next character from the console.
@@ -33,7 +33,7 @@ syscstat()
 syscin()
 {
 int c;
-	while ((c=bdos(6,-1))==0) {
+	while ((c=_bdos(6,-1))==0) {
 		;
 	}
 	return(c);
@@ -43,7 +43,7 @@ int c;
 
 syscout(c) char c;
 {
-	bdos(6,c);
+	_bdos(6,c);
 	return(c);
 }
 
@@ -52,7 +52,7 @@ syscout(c) char c;
 
 syslout(c) char c;
 {
-	bdos(5,c);
+	_bdos(5,c);
 	return(c);
 }
 
@@ -181,7 +181,7 @@ int n;
 sysmovdn(n,dest,source) int n; char *dest, *source;
 {
 	if (n>0) {
-#asm
+/* #asm
 	DB 0DDH,0E1H	;POP IX = return address in IX
 	POP H		;source in HL
 	POP D		;dest in DE
@@ -196,7 +196,7 @@ sysmovdn(n,dest,source) int n; char *dest, *source;
 	DAD B		;source+count in HL
 	INX B		;count+1 in BC
 	DB 0EDH,0B8H	;LDDR
-#endasm
+#endasm */
 	}
 }
 
@@ -208,7 +208,7 @@ sysmovdn(n,dest,source) int n; char *dest, *source;
 sysmovup(n,dest,source) int n; char *dest, *source;
 {
 	if (n>0) {
-#asm
+/*#asm
 	DB 0DDH,0E1H	;POP IX = return address in IX
 	POP H		;source in HL
 	POP D		;dest in DE
@@ -218,24 +218,7 @@ sysmovup(n,dest,source) int n; char *dest, *source;
 	PUSH H
 	DB 0DDH,0E5H	;PUSH IX
 	DB 0EDH,0B0H	;LDIR
-#endasm
+#endasm*/
 	}
 }
 
-/*
-Interfaces with operating system functions
-*/
-
-bdos(c,d) int c,d;
-{
-#asm
-	POP H
-	POP D
-	POP B
-	PUSH B
-	PUSH D
-	PUSH H
-	CALL 5
-#endasm
-}
-

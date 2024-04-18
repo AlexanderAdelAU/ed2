@@ -5,7 +5,7 @@ This file was created by the configuration program:
 Version 2:  September 6, 1981.
 */
 
-#include ed1.h
+//#include ed1.h
 
 /*
 This I/O section is designed for multiple terminals.
@@ -13,9 +13,9 @@ Include the following #define for VT100/ANSI escape
 sequences, and comment it out for ADM-3A (Kaypro) escape sequences.
 */
 
-/*
+
 #define VT100
-*/
+
 
 /*
 Define the current coordinates of the cursor.

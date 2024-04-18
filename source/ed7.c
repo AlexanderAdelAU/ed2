@@ -6,7 +6,7 @@
 
 /* define globals */
 
-#include ed1.h
+//#include ed1.h
 
 /* globals used by this module -----
 

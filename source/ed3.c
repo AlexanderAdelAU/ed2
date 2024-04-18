@@ -9,7 +9,7 @@
 
 /* define globals */
 
-#include ed1.h
+//#include ed1.h
 
 /* data global to these routines */
 
