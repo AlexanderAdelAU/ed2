@@ -9,7 +9,7 @@
 
 #define EXTERN
 
-#include ed1.h
+#include "src/ed1.h"
 
 /* define signon message */
 
@@ -515,4 +515,12 @@ char c;
 	}
 	args [k]=EOS;
 }
-
+#include "src/ed3.c"
+#include "src/ed4.c"
+#include "src/ed5.c"
+#include "src/ed6.c"
+#include "src/ed7.c"
+#include "src/ed8.c"
+#include "src/ed9.c"
+#include "src/ed10.c"
+#include "src/edlib.c"
