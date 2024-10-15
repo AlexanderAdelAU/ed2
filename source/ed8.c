@@ -181,6 +181,20 @@ int n;
 sysmovdn(n,dest,source) int n; char *dest, *source;
 {
 	if (n>0) {
+#asm
+		MOV	*SP+,R1		;SOURCE
+		MOV	*SP+,R2		;DEST
+		MOV	*SP,R3		;COUNT
+		AI	SP,-4		;RESTORE SP
+MOVDNL:	MOVB	*R1,*R2
+		DEC	R1
+		DEC	R2
+		DEC	R3
+		JNE	MOVDNL
+		RET
+
+#endasm
+
 /* #asm
 	DB 0DDH,0E1H	;POP IX = return address in IX
 	POP H		;source in HL
@@ -208,6 +222,18 @@ sysmovdn(n,dest,source) int n; char *dest, *source;
 sysmovup(n,dest,source) int n; char *dest, *source;
 {
 	if (n>0) {
+
+#asm
+		MOV	*SP+,R1		;SOURCE
+		MOV	*SP+,R2		;DEST
+		MOV	*SP,R3		;COUNT
+		AI	SP,-4		;RESTORE SP
+MOVUPL:	MOVB	*R1+,*R2+
+		DEC	R3
+		JNE	MOVUPL
+		RET
+#endasm
+
 /*#asm
 	DB 0DDH,0E1H	;POP IX = return address in IX
 	POP H		;source in HL
