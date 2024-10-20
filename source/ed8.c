@@ -182,17 +182,20 @@ sysmovdn(n,dest,source) int n; char *dest, *source;
 {
 	if (n>0) {
 #asm
+		MOV	*SP+,R0		;RETURN ADDRESS
 		MOV	*SP+,R1		;SOURCE
 		MOV	*SP+,R2		;DEST
 		MOV	*SP,R3		;COUNT
-		AI	SP,-4		;RESTORE SP
+		AI	SP,-6		;RESTORE SP
+		A	R3,R1		;SOURCE PLUS COUNT
+		A	R3,R2		;DESTINATION PLUS COUNT
+		INC	R3
 MOVDNL:	MOVB	*R1,*R2
 		DEC	R1
 		DEC	R2
 		DEC	R3
 		JNE	MOVDNL
 		RET
-
 #endasm
 
 /* #asm
@@ -222,12 +225,12 @@ MOVDNL:	MOVB	*R1,*R2
 sysmovup(n,dest,source) int n; char *dest, *source;
 {
 	if (n>0) {
-
 #asm
+		MOV	*SP+,R0		;RETURN ADDRESS
 		MOV	*SP+,R1		;SOURCE
 		MOV	*SP+,R2		;DEST
 		MOV	*SP,R3		;COUNT
-		AI	SP,-4		;RESTORE SP
+		AI	SP,-6		;RESTORE SP
 MOVUPL:	MOVB	*R1+,*R2+
 		DEC	R3
 		JNE	MOVUPL
