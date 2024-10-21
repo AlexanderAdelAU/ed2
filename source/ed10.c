@@ -42,7 +42,7 @@ int k;
 	/* do initial allocation of memory */
 	if (buffer==0) {
 		//k=60;
-		k = 2;
+		k = 2;			/*  Set at 6k initially */
 		while ((buffer=alloc(k*1024))==-1)
 			k--;
 		bufend=buffer+k*1024;
@@ -347,8 +347,8 @@ int k;
 		to--;
 	}
 
- */
 
+}
 /* move buffer up (towards LOW addresses) */
 
 bufmovup(from,to,length) char *from, *to; int length;
@@ -369,7 +369,8 @@ int k;
 		from++;
 	}
 
- */
+}
+*/
 
 /* return true if at bottom of buffer.
  * NOTE 1: the last line of the buffer is always null.
